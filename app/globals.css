@@ -1,1 +1,88 @@
 @import "tailwindcss";
+
+/* Classic bingo-hall palette and type, shared with the mobile app. */
+@theme {
+  --color-parchment: #f6ebd3;
+  --color-parchment-dark: #e9d9b5;
+  --color-cream: #fff8e7;
+  --color-burgundy: #7a1e2b;
+  --color-burgundy-dark: #55121d;
+  --color-gold: #c9a227;
+  --color-gold-light: #e8cc66;
+  --color-felt: #1f5f3a;
+  --color-felt-dark: #143f27;
+  --color-ink: #2b1d14;
+  --color-ink-soft: #6b5544;
+  --color-success: #2e7d4f;
+  --color-danger: #b3261e;
+  --color-ball-b: #1e4d8c;
+  --color-ball-i: #b3261e;
+  --color-ball-n: #f4f1e8;
+  --color-ball-g: #2e7d4f;
+  --color-ball-o: #e0a526;
+
+  --font-display: var(--font-alfa), "Alfa Slab One", Georgia, serif;
+  --font-wordmark: var(--font-rye), "Rye", Georgia, serif;
+  --font-body: var(--font-spectral), "Spectral", Georgia, serif;
+
+  --shadow-panel: 0 4px 10px rgba(43, 29, 20, 0.18);
+  --shadow-ball: 0 6px 14px rgba(0, 0, 0, 0.35);
+
+  --animate-pulse-glow: pulse-glow 1.6s ease-in-out infinite;
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(201, 162, 39, 0.55);
+    }
+    50% {
+      box-shadow: 0 0 0 7px rgba(201, 162, 39, 0);
+    }
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  background: radial-gradient(140% 100% at 50% 0%, var(--color-cream) 0%, var(--color-parchment) 55%, var(--color-parchment-dark) 100%)
+    fixed;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior-y: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+::selection {
+  background: var(--color-gold-light);
+}
+
+/* Horizontal card carousel: one card per swipe on phones. */
+.snap-row {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.snap-row::-webkit-scrollbar {
+  display: none;
+}
+.snap-row > * {
+  scroll-snap-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

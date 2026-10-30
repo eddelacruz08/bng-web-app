@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# game data lives in data/*.json (kept locally; delete from the History page or by removing the files)
+/data/*.json

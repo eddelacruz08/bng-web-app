@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Pages are client-driven (live WebSocket state), so the newer server
+  // caching modes bring nothing here; keep the classic request-time render.
+  reactStrictMode: true,
   turbopack: {
     rules: {
       "*.css": {
